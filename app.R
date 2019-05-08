@@ -1,7 +1,7 @@
 library(shiny)
-
 library(leaflet)
 library(colorRamps)
+
 setwd("G:\\My Drive\\PhD\\Climate Velocity\\Data\\CRU\\")
 file <- c("TMP_World.nc")
 TMP <- brick(file)
