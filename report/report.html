@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Yiluan Song">
+<meta name="dcterms.date" content="2019-05-20">
+
+<title>IMCP: An Interactive Map of Climate and Phenology</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="report_files/libs/clipboard/clipboard.min.js"></script>
+<script src="report_files/libs/quarto-html/quarto.js"></script>
+<script src="report_files/libs/quarto-html/popper.min.js"></script>
+<script src="report_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="report_files/libs/quarto-html/anchor.min.js"></script>
+<link href="report_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="report_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="report_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="report_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">1 Introduction</a></li>
+  <li><a href="#general-structure" id="toc-general-structure" class="nav-link" data-scroll-target="#general-structure">2 General structure</a></li>
+  <li><a href="#changing-climate-and-phenology-over-time" id="toc-changing-climate-and-phenology-over-time" class="nav-link" data-scroll-target="#changing-climate-and-phenology-over-time">3 Changing climate and phenology over time</a></li>
+  <li><a href="#velocity-of-change-a-derived-metric-for-comparison" id="toc-velocity-of-change-a-derived-metric-for-comparison" class="nav-link" data-scroll-target="#velocity-of-change-a-derived-metric-for-comparison">4 Velocity of change – a derived metric for comparison</a></li>
+  <li><a href="#location-specific-statistics" id="toc-location-specific-statistics" class="nav-link" data-scroll-target="#location-specific-statistics">5 Location-specific statistics</a></li>
+  <li><a href="#temporal-and-spatial-patterns" id="toc-temporal-and-spatial-patterns" class="nav-link" data-scroll-target="#temporal-and-spatial-patterns">6 Temporal and spatial patterns</a></li>
+  <li><a href="#concluding-remarks" id="toc-concluding-remarks" class="nav-link" data-scroll-target="#concluding-remarks">7 Concluding remarks</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">IMCP: An Interactive Map of Climate and Phenology</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Yiluan Song </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 20, 2019</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://yiluansong.shinyapps.io/project/" target="_blank">Click on this link to try out the interactive map.</a></p>
+<p>(You might have to try a few times if the app is in the sleeping mode and takes too long to load.)</p>
+<section id="introduction" class="level1">
+<h1>1 Introduction</h1>
+<p><strong>Plant phenology</strong>, the timing of recurring biological events, is a sensitive indicator to <strong>climate change</strong>. However, the responses of plant phenology to climate change usually vary among locations, time periods, and plant taxa (Richardson et al., 2013). For example, spring leaf-out events have been reported to advance at the rate of 0.3–14 days/decade. Such inconsistencies restrict the comprehensive understanding the impacts of climate change.</p>
+<p>the NASA MEaSUREs Vegetation Index and Phenology (VIP) global datasets constructed from <strong>satellite remote sensing</strong> images allow us to examine the phenological change on a <strong>global</strong> extent. The original format of the data (.hdf) is not easy for the public to navigate. This is incompatible with the increasing public interests in phenological change, which is apparent from the collective data collection efforts such as USA National Phenology Network.</p>
+<p>The objective of this project is therefore to facilitate the <strong>visualization</strong> of global <strong>climate change</strong> and <strong>phenological shift</strong> from 1981 to 2014 through an <strong>interactive map</strong>. Specifically, I used <strong>mean annual temperature (MAT)</strong> as a proxy for <strong>climate</strong> and used <strong>start of growing season (SOS)</strong> as a proxy for <strong>phenology</strong>. The <a href="https://yiluansong.shinyapps.io/project/" target="_blank">final product</a> has four main features:<br>
+1. changing climate and phenology over time,<br>
+2. velocity of change – a derived metric for comparison,<br>
+3. location-specific statistics, and<br>
+4. temporal and spatial patterns.<br>
+Two packages, <em>leaflet</em> and <em>shiny</em>, were used to construct the interactive maps, with <em>leaflet</em> creating the static maps and <em>shiny</em> creating the dynamic elements. In this report, I introduce the main structure and key features of the interactive map, as well as how they are coded.</p>
+<p>Note that the complete executable code are <code>app.R</code> for the app structure and <code>prepare-files.R</code> for preparing files for the app. The code snippets in this report are taken from two files and are provided for demonstration purposes.</p>
+</section>
+<section id="general-structure" class="level1">
+<h1>2 General structure</h1>
+<p>The general structure of the interactive map consists of<br>
+1. data preparation,<br>
+2. a UI (user interface), and<br>
+3. a server. The code for this app is <code>app.R</code>.</p>
+<p>At the start of the code, I did the preparations including loading packages,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(colorRamps)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotrix)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>loading datasets,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"data/TMP_World.nc"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>TMP <span class="ot">&lt;-</span> <span class="fu">brick</span>(file)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>allyears <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">nlayers</span>(TMP))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mnTMP <span class="ot">&lt;-</span> <span class="fu">stackApply</span>(TMP, <span class="at">indices =</span> allyears, <span class="at">fun =</span> mean)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"data/SOS_World_0.5deg_QA_Smooth.nc"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>SOS <span class="ot">&lt;-</span> <span class="fu">brick</span>(file)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>allyears <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">nlayers</span>(SOS))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>mnSOS <span class="ot">&lt;-</span> <span class="fu">stackApply</span>(SOS, <span class="at">indices =</span> allyears, <span class="at">fun =</span> mean)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>Vc <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">"data/Vc.nc"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>Vp <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">"data/Vp.nc"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>projection <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">"data/projection.nc"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>mismatch <span class="ot">&lt;-</span> <span class="fu">raster</span>(<span class="st">"data/mismatch.nc"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>TMP_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(TMP, <span class="at">xy =</span> T)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>SOS_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(SOS, <span class="at">xy =</span> T)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>time<span class="ot">&lt;-</span><span class="dv">1981</span><span class="sc">:</span><span class="dv">2014</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and specifying color palettes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pal_tmpano <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette =</span> <span class="fu">matlab.like</span>(<span class="dv">10</span>),  <span class="at">domain =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>), <span class="at">na.color =</span> <span class="st">"transparent"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pal_sosano <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette =</span> <span class="fu">rev</span>(<span class="fu">matlab.like</span>(<span class="dv">10</span>)),  <span class="at">domain =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">30</span>,<span class="dv">30</span>), <span class="at">na.color =</span> <span class="st">"transparent"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pal_tmp <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette =</span> <span class="fu">matlab.like</span>(<span class="dv">10</span>),  <span class="at">domain =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">20</span>,<span class="dv">40</span>), <span class="at">na.color =</span> <span class="st">"transparent"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>pal_sos <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette =</span> <span class="fu">rev</span>(<span class="fu">matlab.like</span>(<span class="dv">10</span>)),  <span class="at">domain =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">365</span>), <span class="at">na.color =</span> <span class="st">"transparent"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>qpal_Vc <span class="ot">&lt;-</span> <span class="fu">colorBin</span>(<span class="st">"Reds"</span>, <span class="at">domain =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10000</span>),<span class="at">bins =</span> <span class="fu">c</span>( <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>),<span class="at">na.color =</span> <span class="st">"transparent"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>qpal_Vp <span class="ot">&lt;-</span> <span class="fu">colorBin</span>(<span class="st">"Blues"</span>, <span class="at">domain =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10000</span>),<span class="at">bins =</span> <span class="fu">c</span>( <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>),<span class="at">na.color =</span> <span class="st">"transparent"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>qpal_projection <span class="ot">&lt;-</span> <span class="fu">colorBin</span>(<span class="fu">rev</span>(<span class="fu">matlab.like</span>(<span class="dv">10</span>)), <span class="at">domain =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">400</span>,<span class="dv">400</span>),<span class="at">bins =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">400</span>,<span class="sc">-</span><span class="dv">100</span>,<span class="sc">-</span><span class="dv">20</span>,<span class="sc">-</span><span class="dv">10</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">100</span>,<span class="dv">400</span>),<span class="at">na.color =</span> <span class="st">"transparent"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>qpal_mismatch <span class="ot">&lt;-</span> <span class="fu">colorBin</span>(<span class="fu">matlab.like</span>(<span class="dv">10</span>), <span class="at">domain =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">400</span>,<span class="dv">400</span>),<span class="at">bins =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">400</span>,<span class="sc">-</span><span class="dv">100</span>,<span class="sc">-</span><span class="dv">20</span>,<span class="sc">-</span><span class="dv">10</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">100</span>,<span class="dv">400</span>),<span class="at">na.color =</span> <span class="st">"transparent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The UI specifies the layout of the map, control, and output. (Certain details are omitted here.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ui<span class="ot">&lt;-</span><span class="fu">fluidPage</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">navbarPage</span>(<span class="st">"IMCP: An Interactive Map of Climate and Phenology"</span>, <span class="at">id=</span><span class="st">"nav"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">tabPanel</span>(<span class="st">"Mean Annual Temperature vs Start of Season"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># ...</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">leafletOutput</span>(<span class="st">"raster_map"</span>, <span class="at">height=</span><span class="dv">300</span>,<span class="at">width=</span><span class="dv">650</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># ...</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                      tags<span class="sc">$</span><span class="fu">div</span>(<span class="at">id=</span><span class="st">"cite"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">'Data compiled for '</span>, tags<span class="sc">$</span><span class="fu">em</span>(<span class="st">'"An Interactive Map of Climate and Phenology"'</span>), <span class="st">' by Yiluan Song'</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                      )</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>             )</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The server specifies the responses of the map to user’s actions.(Certain details are omitted here.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>server<span class="ot">&lt;-</span><span class="cf">function</span>(input, output){</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>raster_map <span class="ot">=</span> <span class="fu">renderLeaflet</span>({<span class="fu">leaflet</span>(<span class="at">width =</span> <span class="st">"100%"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addTiles</span>()<span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="dv">35</span>, <span class="at">lat =</span> <span class="dv">30</span>, <span class="at">zoom =</span> <span class="dv">1</span>)})</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Display selected layers</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observe</span>({</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"MAT Anomaly"</span>) {}</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"SOS Anomaly"</span>) {}</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"Mean MAT"</span>) {}</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"Mean SOS"</span>) {}</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"MAT Velocity"</span>) {}</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"SOS Velocity"</span>) {}</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"Projection"</span>) {}</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"Mismatch"</span>) {}</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Show popup on click</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>raster_map_click, {})</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Matrix plot on click</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>raster_map_click, {})</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Lineplot on click</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>raster_map_click, {})</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The following command integrates the previous elements and make the Shiny app. It should be noted that the R script need to be named app.R for it to run properly. Setting working directory should also be avoided, so files needed are stored in the same path as the R script.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="changing-climate-and-phenology-over-time" class="level1">
+<h1>3 Changing climate and phenology over time</h1>
+<p>One of the most effective way of visualizing climate change is to observe the changes through time. The user are able to selectively display MAT or SOS using a drop-down menu, and navigate to the designated year using a time slider. The anomalies of MAT and SOS, i.e., the differences in the absolute values and the mean values, were displayed instead of the raw data to allow easy visualization of temporal changes. The mean values of MAT and SOS over the study period (1981-2014) were also displayed for reference.</p>
+<p>The drop-down menu and time slider are coded as follows in the UI:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">selectInput</span>(<span class="st">"layer"</span>, <span class="st">"Layer"</span>,<span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"MAT Anomaly"</span>, <span class="st">"SOS Anomaly"</span>,<span class="st">"Mean MAT"</span>, <span class="st">"Mean SOS"</span>,<span class="st">"MAT Velocity"</span>,<span class="st">"SOS Velocity"</span>, <span class="st">"Projection"</span>, <span class="st">"Mismatch"</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sliderInput</span>(<span class="st">"year"</span>, <span class="st">"Year"</span>,<span class="at">min=</span><span class="dv">1981</span>, <span class="at">max=</span><span class="dv">2014</span>, <span class="at">value=</span><span class="dv">1</span>, <span class="at">ticks=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The reactive layers of MAT anomal, SOS anomaly, mean MAT, and mean SOS are coded as follows in the server:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">observe</span>({</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"MAT Anomaly"</span>) {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>      reactiveRaster <span class="ot">&lt;-</span> <span class="fu">reactive</span>({TMP[[input<span class="sc">$</span>year<span class="dv">-1980</span>]]<span class="sc">-</span>mnTMP})</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">leafletProxy</span>(<span class="st">"raster_map"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearImages</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearControls</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addRasterImage</span>(<span class="fu">reactiveRaster</span>(),<span class="at">colors =</span> pal_tmpano, <span class="at">opacity =</span> <span class="dv">1</span>, <span class="at">layerId =</span> <span class="st">"MAT"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addLegend</span>(<span class="at">pal =</span> pal_tmpano, <span class="at">values =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="at">by=</span><span class="dv">1</span>),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">"bottomleft"</span>,<span class="at">title =</span> <span class="st">"MAT Anomaly (Â°C)"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">layerId =</span> <span class="st">"MAT"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"SOS Anomaly"</span>) {</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>      reactiveRaster <span class="ot">&lt;-</span> <span class="fu">reactive</span>({SOS[[input<span class="sc">$</span>year<span class="dv">-1980</span>]]<span class="sc">-</span>mnSOS})</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">leafletProxy</span>(<span class="st">"raster_map"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearImages</span>()<span class="sc">%&gt;%</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearControls</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addRasterImage</span>(<span class="fu">reactiveRaster</span>(),<span class="at">colors =</span> pal_sosano, <span class="at">opacity =</span> <span class="dv">1</span>, <span class="at">layerId =</span> <span class="st">"SOS"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addLegend</span>(<span class="at">pal =</span> pal_sosano, <span class="at">values =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">15</span>,<span class="dv">15</span>,<span class="at">by=</span><span class="dv">5</span>),</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">"bottomleft"</span>,<span class="at">title =</span> <span class="st">"SOS Anomaly (day)"</span>,</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                  <span class="at">layerId =</span> <span class="st">"SOS"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"Mean MAT"</span>) {</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">leafletProxy</span>(<span class="st">"raster_map"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearImages</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearControls</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addRasterImage</span>(mnTMP, <span class="at">colors =</span> pal_tmp, <span class="at">opacity =</span> <span class="dv">1</span>,<span class="at">layerId =</span> <span class="st">"Mean MAT"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addLegend</span>(<span class="at">pal =</span> pal_tmp, <span class="at">values =</span> <span class="fu">values</span>(mnTMP),</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">"bottomleft"</span>,<span class="at">title =</span> <span class="st">"Mean MAT ((Â°C)"</span>,</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>                  <span class="at">layerId =</span> <span class="st">"Mean MAT"</span>)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"Mean SOS"</span>) {</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">leafletProxy</span>(<span class="st">"raster_map"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearImages</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearControls</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addRasterImage</span>(mnSOS, <span class="at">colors =</span> pal_sos, <span class="at">opacity =</span> <span class="dv">1</span>,<span class="at">layerId =</span> <span class="st">"Mean SOS"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addLegend</span>(<span class="at">pal =</span> pal_sos, <span class="at">values =</span> <span class="fu">values</span>(mnSOS),</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">"bottomleft"</span>,<span class="at">title =</span> <span class="st">"Mean SOS (day)"</span>,</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>                  <span class="at">layerId =</span> <span class="st">"Mean SOS"</span>)</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    }<span class="er">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="velocity-of-change-a-derived-metric-for-comparison" class="level1">
+<h1>4 Velocity of change – a derived metric for comparison</h1>
+<p>It is difficult to compare the changes between climate and phenology simply by browsing through years, because the changes take place in both spatial and temporal dimensions. The <strong>velocity of change</strong> represents the pace of geographic movements of the isolines of a certain variable over time (Loarie et al., 2009; Burrows et al., 2011). It takes advantage of both the spatial distributions and temporal dynamics of climate and phenology, integrating them into the same unit (distance over time), and making climate and phenology directly comparable.</p>
+<p>I calculated the spatial gradient, temporal gradients, the magnitudes and directions velocities of both MAT and SOS following Burrows et al.&nbsp;(2011) using the functions adapted from the _vocc_package. The velocities of MAT and SOS are referred to as Vc and Vp, respectively. I further calculated the projection of Vp on Vc and the mismatch between Vc and the projection. A positive projection implies that Vp and Vc are on similar directions, and a positive mismatch implies that Vp is slower than Vc on the direction of Vc or on opposite directions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Fig1.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 1.</strong> Conceptual diagram of projection and mismatch.</figcaption>
+</figure>
+</div>
+<p>The core code for calculating velocities, projection, and mismatch are as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"cbrown5/vocc"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vocc)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>calcvelocityXY <span class="ot">&lt;-</span> <span class="cf">function</span>(grad, slope, <span class="at">y_dist =</span> <span class="fl">111.325</span>){</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  slope<span class="sc">$</span>w <span class="ot">&lt;-</span> y_dist <span class="sc">*</span> <span class="fu">cos</span>(CircStats<span class="sc">::</span><span class="fu">rad</span>(slope<span class="sc">$</span>y))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  grd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NSold =</span> grad<span class="sc">$</span>NS, <span class="at">WEold =</span> grad<span class="sc">$</span>WE)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  grd<span class="sc">$</span>NS <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(grd<span class="sc">$</span>NSold) <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="dv">0</span>, grd<span class="sc">$</span>NSold)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  grd<span class="sc">$</span>WE <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(grd<span class="sc">$</span>WEold) <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="dv">0</span>, grd<span class="sc">$</span>WEold)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  grd<span class="sc">$</span>NAsort <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">abs</span>(grd<span class="sc">$</span>NS)<span class="sc">+</span><span class="fu">abs</span>(grd<span class="sc">$</span>WE) <span class="sc">==</span> <span class="dv">0</span>, <span class="cn">NA</span>, <span class="dv">1</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  grd<span class="sc">$</span>Grad <span class="ot">&lt;-</span> grd<span class="sc">$</span>NAsort <span class="sc">*</span> <span class="fu">sqrt</span>((grd<span class="sc">$</span>WE<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> (grd<span class="sc">$</span>NS<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  grd<span class="sc">$</span>NS <span class="ot">&lt;-</span> grd<span class="sc">$</span>NAsort <span class="sc">*</span> grd<span class="sc">$</span>NS</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  grd<span class="sc">$</span>WE <span class="ot">&lt;-</span> grd<span class="sc">$</span>NAsort <span class="sc">*</span> grd<span class="sc">$</span>WE</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  velocity <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> slope<span class="sc">$</span>x, <span class="at">y =</span> slope<span class="sc">$</span>y, <span class="at">temporal_trend =</span> slope<span class="sc">$</span>slope, <span class="at">spatial_gradient =</span> grd<span class="sc">$</span>Grad, <span class="at">NSgrad =</span> grad<span class="sc">$</span>NS, <span class="at">WEgrad =</span> grad<span class="sc">$</span>WE, <span class="at">angle =</span> grad<span class="sc">$</span>angle, <span class="at">w =</span> slope<span class="sc">$</span>w, <span class="at">icell =</span> grad<span class="sc">$</span>icell)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  velocity<span class="sc">$</span>velocity <span class="ot">&lt;-</span> <span class="fu">with</span>(velocity, temporal_trend<span class="sc">/</span>spatial_gradient)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  velocity<span class="sc">$</span>anglenew <span class="ot">&lt;-</span> <span class="fu">ifelse</span>( velocity<span class="sc">$</span>temporal_trend <span class="sc">&lt;</span> <span class="dv">0</span>, velocity<span class="sc">$</span>angle<span class="sc">+</span><span class="dv">180</span>, velocity<span class="sc">$</span>angle)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  velocity<span class="sc">$</span>velocityX <span class="ot">&lt;-</span> <span class="sc">-</span>velocity<span class="sc">$</span>velocity<span class="sc">*</span>(velocity<span class="sc">$</span>WEgrad<span class="sc">/</span><span class="fu">sqrt</span>(velocity<span class="sc">$</span>WEgrad<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>velocity<span class="sc">$</span>NSgrad<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  velocity<span class="sc">$</span>velocityY <span class="ot">&lt;-</span> <span class="sc">-</span>velocity<span class="sc">$</span>velocity<span class="sc">*</span>(velocity<span class="sc">$</span>NSgrad<span class="sc">/</span><span class="fu">sqrt</span>(velocity<span class="sc">$</span>WEgrad<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>velocity<span class="sc">$</span>NSgrad<span class="sc">^</span><span class="dv">2</span>))    </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(velocity)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"data/TMP_World.nc"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>TMP <span class="ot">&lt;-</span> <span class="fu">brick</span>(file)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>slopedat <span class="ot">&lt;-</span> <span class="fu">calcslope</span>(TMP,<span class="at">divisor =</span> <span class="dv">1</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>allyears <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">nlayers</span>(TMP))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>mnTMP <span class="ot">&lt;-</span> <span class="fu">stackApply</span>(TMP, <span class="at">indices =</span> allyears, <span class="at">fun =</span> mean)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>spatx <span class="ot">&lt;-</span> <span class="fu">spatialgrad</span>(mnTMP,<span class="at">y_dist =</span> <span class="fu">c</span>(<span class="fl">111.325</span>, <span class="fl">111.325</span>), <span class="at">y_diff =</span> <span class="fl">0.5</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>velodf <span class="ot">&lt;-</span> <span class="fu">calcvelocityXY</span>(spatx, slopedat)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>rtrendC <span class="ot">&lt;-</span> rgradC <span class="ot">&lt;-</span> rvoccC <span class="ot">&lt;-</span> rangleC <span class="ot">&lt;-</span> rvoccCX <span class="ot">&lt;-</span> rvoccCY <span class="ot">&lt;-</span> <span class="fu">raster</span>(TMP)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>rgradC[spatx<span class="sc">$</span>icell] <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((spatx<span class="sc">$</span>NS)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span> (spatx<span class="sc">$</span>WE)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>rtrendC[slopedat<span class="sc">$</span>icell] <span class="ot">&lt;-</span> slopedat<span class="sc">$</span>slope</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>rvoccC[velodf<span class="sc">$</span>icell] <span class="ot">&lt;-</span> <span class="fu">abs</span>(velodf<span class="sc">$</span>velocity)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>rangleC[velodf<span class="sc">$</span>icell] <span class="ot">&lt;-</span> velodf<span class="sc">$</span>anglenew</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>rvoccCX[velodf<span class="sc">$</span>icell] <span class="ot">&lt;-</span> velodf<span class="sc">$</span>velocityX</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>rvoccCY[velodf<span class="sc">$</span>icell] <span class="ot">&lt;-</span> velodf<span class="sc">$</span>velocityY</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>rvoccC <span class="ot">&lt;-</span> <span class="fu">crop</span>(rvoccC, e)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>rangleC <span class="ot">&lt;-</span> <span class="fu">crop</span>(rangleC, e)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>rvoccCX <span class="ot">&lt;-</span> <span class="fu">crop</span>(rvoccCX, e)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>rvoccCY <span class="ot">&lt;-</span> <span class="fu">crop</span>(rvoccCY, e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"data/SOS_World_0.5deg_QA_Smooth.nc"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>SOS <span class="ot">&lt;-</span> <span class="fu">brick</span>(file)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>slopedat <span class="ot">&lt;-</span> <span class="fu">calcslope</span>(SOS,<span class="at">divisor=</span><span class="dv">1</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>allyears <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">nlayers</span>(SOS))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>mnSOS <span class="ot">&lt;-</span> <span class="fu">stackApply</span>(SOS, <span class="at">indices =</span> allyears, <span class="at">fun =</span> mean)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>spatx <span class="ot">&lt;-</span> <span class="fu">spatialgrad</span>(mnSOS,<span class="at">y_dist =</span> <span class="fu">c</span>(<span class="fl">111.325</span>, <span class="fl">111.325</span>), <span class="at">y_diff =</span> <span class="fl">0.5</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>velodf <span class="ot">&lt;-</span> <span class="fu">calcvelocityXY</span>(spatx, slopedat)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>rtrendP <span class="ot">&lt;-</span> rgradP <span class="ot">&lt;-</span> rvoccP <span class="ot">&lt;-</span> rangleP <span class="ot">&lt;-</span> rvoccPX <span class="ot">&lt;-</span> rvoccPY <span class="ot">&lt;-</span> <span class="fu">raster</span>(SOS)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>rgradP[spatx<span class="sc">$</span>icell] <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((spatx<span class="sc">$</span>NS)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span> (spatx<span class="sc">$</span>WE)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>rtrendP[slopedat<span class="sc">$</span>icell] <span class="ot">&lt;-</span> slopedat<span class="sc">$</span>slope</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>rvoccP[velodf<span class="sc">$</span>icell] <span class="ot">&lt;-</span> <span class="fu">abs</span>(velodf<span class="sc">$</span>velocity)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>rangleP[velodf<span class="sc">$</span>icell] <span class="ot">&lt;-</span> velodf<span class="sc">$</span>anglenew</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>rvoccPX[velodf<span class="sc">$</span>icell] <span class="ot">&lt;-</span> velodf<span class="sc">$</span>velocityX</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>rvoccPY[velodf<span class="sc">$</span>icell] <span class="ot">&lt;-</span> velodf<span class="sc">$</span>velocityY</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>rvoccP <span class="ot">&lt;-</span> <span class="fu">crop</span>(rvoccP, e)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>rangleP <span class="ot">&lt;-</span> <span class="fu">crop</span>(rangleP, e)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>rvoccPX <span class="ot">&lt;-</span> <span class="fu">crop</span>(rvoccPX, e)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>rvoccPY <span class="ot">&lt;-</span> <span class="fu">crop</span>(rvoccPY, e)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>projection <span class="ot">&lt;-</span>(rvoccCX<span class="sc">*</span>rvoccPX<span class="sc">+</span>rvoccCY<span class="sc">*</span>rvoccPY)<span class="sc">/</span>rvoccC</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>mismatch <span class="ot">&lt;-</span> rvoccC<span class="sc">-</span>projection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In order to shorten the response time of the map, I stored the following four velocity-related maps as netCDF files. I did this step by running <code>prepare-files.R</code> before deploying the app.</p>
+<p>I load these processed metrics directly before running the map:</p>
+<ol type="1">
+<li>MAT velocity,<br>
+</li>
+<li>SOS velocity,<br>
+</li>
+<li>projection, and<br>
+</li>
+<li>mismatch</li>
+</ol>
+<p>The users were able to selectively display the four layers in the drop-down menu. Note that as the distributions of velocity-related variables are highly over-dispersed, I assigned customized discrete color scales. The layers are coded in the server as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">observe</span>({</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"MAT Velocity"</span>) {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">leafletProxy</span>(<span class="st">"raster_map"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearImages</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearControls</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addRasterImage</span>(Vc, <span class="at">colors =</span> qpal_Vc, <span class="at">opacity =</span> <span class="dv">1</span>,<span class="at">layerId =</span> <span class="st">"MAT Velocity"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addLegend</span>(<span class="at">pal =</span> qpal_Vc, <span class="at">values =</span> <span class="fu">values</span>(Vc),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">"bottomleft"</span>,<span class="at">title =</span> <span class="st">"MAT Velocity (km/year)"</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">layerId =</span> <span class="st">"MAT Velocity"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"SOS Velocity"</span>) {</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">leafletProxy</span>(<span class="st">"raster_map"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearImages</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearControls</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addRasterImage</span>(Vp, <span class="at">colors =</span> qpal_Vp, <span class="at">opacity =</span> <span class="dv">1</span>,<span class="at">layerId =</span> <span class="st">"SOS Velocity"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addLegend</span>(<span class="at">pal =</span> qpal_Vp, <span class="at">values =</span> <span class="fu">values</span>(Vp),</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">"bottomleft"</span>,<span class="at">title =</span> <span class="st">"SOS Velocity (km/year)"</span>,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">layerId =</span> <span class="st">"SOS Velocity"</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"Projection"</span>) {</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">leafletProxy</span>(<span class="st">"raster_map"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearImages</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearControls</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addRasterImage</span>(projection, <span class="at">colors =</span> qpal_projection, <span class="at">opacity =</span> <span class="dv">1</span>,<span class="at">layerId =</span> <span class="st">"Projection"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addLegend</span>(<span class="at">pal =</span> qpal_projection, <span class="at">values =</span> <span class="fu">values</span>(projection),</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">"bottomleft"</span>,<span class="at">title =</span> <span class="st">"Projection (km/year)"</span>,</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                  <span class="at">layerId =</span> <span class="st">"Projection"</span>)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(input<span class="sc">$</span>layer<span class="sc">==</span><span class="st">"Mismatch"</span>) {</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>      <span class="fu">leafletProxy</span>(<span class="st">"raster_map"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearImages</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>        <span class="fu">clearControls</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addRasterImage</span>(mismatch, <span class="at">colors =</span> qpal_mismatch, <span class="at">opacity =</span> <span class="dv">1</span>,<span class="at">layerId =</span> <span class="st">"Mismatch"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">addLegend</span>(<span class="at">pal =</span> qpal_mismatch, <span class="at">values =</span> <span class="fu">values</span>(mismatch),</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">"bottomleft"</span>,<span class="at">title =</span> <span class="st">"Mismatch (km/year)"</span>,</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>                  <span class="at">layerId =</span> <span class="st">"Mismatch"</span>)</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="location-specific-statistics" class="level1">
+<h1>5 Location-specific statistics</h1>
+<p>For users who are interested in not only the general patterns but also details about particular locations, this feature allows them to click on pixels and retrieve detailed information in a pop-up window. The details currently include</p>
+<ol type="1">
+<li>latitude,<br>
+</li>
+<li>longitude,<br>
+</li>
+<li>mean MAT,<br>
+</li>
+<li>mean SOS,<br>
+</li>
+<li>MAT velocity,<br>
+</li>
+<li>SOS velocity,<br>
+</li>
+<li>projection, and<br>
+</li>
+<li>mismatch.</li>
+</ol>
+<p>The pop-up window was coded in the server by observing clicking events, retrieving coordinates, and extracting values from corresponding rasters. It should be noted that although the leaflet maps are wrapped, the longitude values are adjusted so that they are always between -180 and 180.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>raster_map_click, {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    click <span class="ot">&lt;-</span> input<span class="sc">$</span>raster_map_click</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    lat<span class="ot">&lt;-</span>(<span class="dv">90</span><span class="sc">+</span>click<span class="sc">$</span>lat)<span class="sc">%%</span><span class="dv">180-90</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    lng<span class="ot">&lt;-</span>(<span class="dv">180</span><span class="sc">+</span>click<span class="sc">$</span>lng)<span class="sc">%%</span><span class="dv">360-180</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    text_lat<span class="ot">&lt;-</span><span class="fu">paste</span>(<span class="st">"Latitude: "</span>, <span class="fu">round</span>(lat,<span class="dv">2</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    text_lng<span class="ot">&lt;-</span><span class="fu">paste</span>(<span class="st">"Longtitude: "</span>, <span class="fu">round</span>(lng,<span class="dv">2</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    text_mnTMP<span class="ot">&lt;-</span><span class="fu">paste</span>(<span class="st">"Mean MAT: "</span>, <span class="fu">round</span>(<span class="fu">extract</span>(mnTMP,<span class="fu">data.frame</span>(lng,lat)),<span class="dv">2</span>),<span class="st">" Â°C"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    text_mnSOS<span class="ot">&lt;-</span><span class="fu">paste</span>(<span class="st">"Mean SOS: "</span>, <span class="fu">round</span>(<span class="fu">extract</span>(mnSOS,<span class="fu">data.frame</span>(lng,lat)),<span class="dv">2</span>), <span class="st">" Day"</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    text_Vc<span class="ot">&lt;-</span><span class="fu">paste</span>(<span class="st">"MAT Velocity: "</span>, <span class="fu">round</span>(<span class="fu">extract</span>(Vc,<span class="fu">data.frame</span>(lng,lat)),<span class="dv">2</span>),<span class="st">" km/year"</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    text_Vp<span class="ot">&lt;-</span><span class="fu">paste</span>(<span class="st">"SOS Velocity: "</span>, <span class="fu">round</span>(<span class="fu">extract</span>(Vp,<span class="fu">data.frame</span>(lng,lat)),<span class="dv">2</span>),<span class="st">" km/year"</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    text_projection<span class="ot">&lt;-</span><span class="fu">paste</span>(<span class="st">"Projection: "</span>, <span class="fu">round</span>(<span class="fu">extract</span>(projection,<span class="fu">data.frame</span>(lng,lat)),<span class="dv">2</span>),<span class="st">" km/year"</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    text_mismatch<span class="ot">&lt;-</span><span class="fu">paste</span>(<span class="st">"Mismatch: "</span>, <span class="fu">round</span>(<span class="fu">extract</span>(mismatch,<span class="fu">data.frame</span>(lng,lat)),<span class="dv">2</span>),<span class="st">" km/year"</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    content <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">tagList</span>(</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>      text_lat, tags<span class="sc">$</span><span class="fu">br</span>(),</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>      text_lng, tags<span class="sc">$</span><span class="fu">br</span>(),</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>      text_mnTMP, tags<span class="sc">$</span><span class="fu">br</span>(),</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>      text_mnSOS, tags<span class="sc">$</span><span class="fu">br</span>(),</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>      text_Vc, tags<span class="sc">$</span><span class="fu">br</span>(),</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>      text_Vp, tags<span class="sc">$</span><span class="fu">br</span>(),</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>      text_projection, tags<span class="sc">$</span><span class="fu">br</span>(),</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>      text_mismatch</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletProxy</span>(<span class="st">"raster_map"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">clearPopups</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addPopups</span>(click<span class="sc">$</span>lng, click<span class="sc">$</span>lat, content)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="temporal-and-spatial-patterns" class="level1">
+<h1>6 Temporal and spatial patterns</h1>
+<p>Although the velocity of change metrics integrate information in the spatial and temporal dimensions, detailed temporal and spatial patterns can provide more context to the relationship between phenology an climate. I built in two panels showing<br>
+1. temporal trends of MAT and SOS over 34 years at the selected pixel, and<br>
+2. MAT and SOS in the neighbouring pixels.</p>
+<p>Both sets of figures can inform whether phenology is positively or negatively correlated to climate, but the spatial patterns show historical relationships, whereas temporal trends reveal more recent changes.</p>
+<p>The two panels for figures are coded in the UI:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">absolutePanel</span>(<span class="at">id =</span> <span class="st">"controls"</span>, <span class="at">class =</span> <span class="st">"panel panel-default"</span>, <span class="at">fixed =</span> <span class="cn">TRUE</span>,<span class="at">draggable =</span> <span class="cn">TRUE</span>, <span class="at">top =</span> <span class="dv">120</span>, <span class="at">left =</span> <span class="st">"auto"</span>, <span class="at">right =</span> <span class="dv">360</span>, <span class="at">bottom =</span> <span class="st">"auto"</span>,<span class="at">width =</span> <span class="dv">300</span>, <span class="at">height =</span> <span class="st">"auto"</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                                        </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">h4</span>(<span class="st">"Temporal patterns"</span>),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">plotOutput</span>(<span class="st">"lineplot_TMP"</span>, <span class="at">height =</span> <span class="dv">200</span>),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">plotOutput</span>(<span class="st">"lineplot_SOS"</span>, <span class="at">height =</span> <span class="dv">200</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                          )</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                          </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">absolutePanel</span>(<span class="at">id =</span> <span class="st">"controls"</span>, <span class="at">class =</span> <span class="st">"panel panel-default"</span>, <span class="at">fixed =</span> <span class="cn">TRUE</span>,<span class="at">draggable =</span> <span class="cn">TRUE</span>, <span class="at">top =</span> <span class="dv">120</span>, <span class="at">left =</span> <span class="st">"auto"</span>, <span class="at">right =</span> <span class="dv">60</span>, <span class="at">bottom =</span> <span class="st">"auto"</span>,<span class="at">width =</span> <span class="dv">300</span>, <span class="at">height =</span> <span class="st">"auto"</span>, </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                                        </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">h4</span>(<span class="st">"Spatial patterns"</span>),</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">plotOutput</span>(<span class="st">"neighbours_TMP"</span>,<span class="at">height =</span> <span class="dv">200</span>),</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">plotOutput</span>(<span class="st">"neighbours_SOS"</span>,<span class="at">height =</span> <span class="dv">200</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>                          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The line plots for temporal patterns are coded as follows in the server:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>raster_map_click, {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    click <span class="ot">&lt;-</span> input<span class="sc">$</span>raster_map_click</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    lat<span class="ot">&lt;-</span>(<span class="dv">90</span><span class="sc">+</span>click<span class="sc">$</span>lat)<span class="sc">%%</span><span class="dv">180-90</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    lng<span class="ot">&lt;-</span>(<span class="dv">180</span><span class="sc">+</span>click<span class="sc">$</span>lng)<span class="sc">%%</span><span class="dv">360-180</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    xcoor<span class="ot">&lt;-</span><span class="fu">round</span>((lng <span class="sc">-</span> <span class="fl">0.25</span>) <span class="sc">*</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.25</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    ycoor<span class="ot">&lt;-</span><span class="fu">round</span>((lat <span class="sc">-</span> <span class="fl">0.25</span>) <span class="sc">*</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.25</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    ts_TMP<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(TMP_df[TMP_df<span class="sc">$</span>x <span class="sc">==</span> xcoor <span class="sc">&amp;</span> TMP_df<span class="sc">$</span>y <span class="sc">==</span>ycoor,<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="fu">dim</span>(TMP_df)[<span class="dv">2</span>])])</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    ts_SOS<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(SOS_df[SOS_df<span class="sc">$</span>x <span class="sc">==</span> xcoor <span class="sc">&amp;</span> SOS_df<span class="sc">$</span>y <span class="sc">==</span>ycoor,<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="fu">dim</span>(SOS_df)[<span class="dv">2</span>])])</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>lineplot_TMP <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">plot</span>(ts_TMP<span class="sc">~</span>time,<span class="at">type=</span><span class="st">"l"</span>,<span class="at">lty=</span><span class="dv">2</span>,</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">ylab=</span><span class="st">"MAT (Â°C)"</span>,<span class="at">xlab=</span><span class="st">""</span>,</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">col=</span><span class="st">"red"</span>,  <span class="at">col.lab=</span><span class="st">"red"</span>)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">abline</span>(<span class="fu">lm</span>(ts_TMP<span class="sc">~</span>time),<span class="at">col=</span><span class="st">"red"</span>)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>lineplot_SOS <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">plot</span>(ts_SOS<span class="sc">~</span>time,<span class="at">type=</span><span class="st">"l"</span>,<span class="at">lty=</span><span class="dv">2</span>,</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>           <span class="at">ylab=</span><span class="st">"SOS (Day)"</span>,<span class="at">xlab=</span><span class="st">""</span>,</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">col=</span><span class="st">"dark green"</span>,  <span class="at">col.lab=</span><span class="st">"dark green"</span>)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">abline</span>(<span class="fu">lm</span>(ts_SOS<span class="sc">~</span>time),<span class="at">col=</span><span class="st">"dark green"</span>)</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The matrix plots for spatial patterns are coded as follows in the server:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>raster_map_click, {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  click <span class="ot">&lt;-</span> input<span class="sc">$</span>raster_map_click</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  lat<span class="ot">&lt;-</span>(<span class="dv">90</span><span class="sc">+</span>click<span class="sc">$</span>lat)<span class="sc">%%</span><span class="dv">180-90</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  lng<span class="ot">&lt;-</span>(<span class="dv">180</span><span class="sc">+</span>click<span class="sc">$</span>lng)<span class="sc">%%</span><span class="dv">360-180</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  xcoor<span class="ot">&lt;-</span><span class="fu">round</span>((lng <span class="sc">-</span> <span class="fl">0.25</span>) <span class="sc">*</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.25</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  ycoor<span class="ot">&lt;-</span><span class="fu">round</span>((lat <span class="sc">-</span> <span class="fl">0.25</span>) <span class="sc">*</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.25</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  sp<span class="ot">&lt;-</span><span class="fu">SpatialPoints</span>(<span class="fu">cbind</span>(xcoor, ycoor))</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  sp_top<span class="ot">&lt;-</span><span class="fu">SpatialPoints</span>(<span class="fu">cbind</span>(xcoor, ycoor<span class="fl">+0.5</span>))</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  sp_bottom<span class="ot">&lt;-</span><span class="fu">SpatialPoints</span>(<span class="fu">cbind</span>(xcoor, ycoor<span class="fl">-0.5</span>))</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  sp_right<span class="ot">&lt;-</span><span class="fu">SpatialPoints</span>(<span class="fu">cbind</span>(xcoor<span class="fl">+0.5</span>, ycoor))</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  sp_left<span class="ot">&lt;-</span><span class="fu">SpatialPoints</span>(<span class="fu">cbind</span>(xcoor<span class="fl">-0.5</span>, ycoor))</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  sp_top_left<span class="ot">&lt;-</span><span class="fu">SpatialPoints</span>(<span class="fu">cbind</span>(xcoor<span class="fl">-0.5</span>, ycoor<span class="fl">+0.5</span>))</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  sp_bottom_left<span class="ot">&lt;-</span><span class="fu">SpatialPoints</span>(<span class="fu">cbind</span>(xcoor<span class="fl">-0.5</span>, ycoor<span class="fl">-0.5</span>))</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  sp_top_right<span class="ot">&lt;-</span><span class="fu">SpatialPoints</span>(<span class="fu">cbind</span>(xcoor<span class="fl">+0.5</span>, ycoor<span class="fl">+0.5</span>))</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  sp_bottom_right<span class="ot">&lt;-</span><span class="fu">SpatialPoints</span>(<span class="fu">cbind</span>(xcoor<span class="fl">+0.5</span>, ycoor<span class="fl">-0.5</span>))</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  tmp_neighbours<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">extract</span>(mnTMP,sp_top_left),<span class="fu">extract</span>(mnTMP,sp_top),<span class="fu">extract</span>(mnTMP,sp_top_right),</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">extract</span>(mnTMP,sp_left),<span class="fu">extract</span>(mnTMP,sp),<span class="fu">extract</span>(mnTMP,sp_right),</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">extract</span>(mnTMP,sp_bottom_left),<span class="fu">extract</span>(mnTMP,sp_bottom),<span class="fu">extract</span>(mnTMP,sp_bottom_right))</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>                         , <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  sos_neighbours<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">extract</span>(mnSOS,sp_top_left),<span class="fu">extract</span>(mnSOS,sp_top),<span class="fu">extract</span>(mnSOS,sp_top_right),</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">extract</span>(mnSOS,sp_left),<span class="fu">extract</span>(mnSOS,sp),<span class="fu">extract</span>(mnSOS,sp_right),</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">extract</span>(mnSOS,sp_bottom_left),<span class="fu">extract</span>(mnSOS,sp_bottom),<span class="fu">extract</span>(mnSOS,sp_bottom_right))</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>                         , <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>neighbours_TMP <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">color2D.matplot</span>(tmp_neighbours,<span class="at">show.values =</span> <span class="cn">TRUE</span>, <span class="at">main=</span><span class="st">"Mean MAT (Â°C)"</span>, <span class="at">xlab=</span><span class="st">"Latitude"</span>,<span class="at">ylab=</span><span class="st">"Longitude"</span>,<span class="at">axes=</span><span class="cn">FALSE</span>,<span class="at">extremes =</span> <span class="fu">c</span>(<span class="st">"white"</span>,<span class="st">"red"</span>))</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>neighbours_SOS <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">color2D.matplot</span>(sos_neighbours,<span class="at">show.values =</span> <span class="cn">TRUE</span>, <span class="at">main=</span><span class="st">"Mean SOS (day)"</span>, <span class="at">xlab=</span><span class="st">"Latitude"</span>,<span class="at">ylab=</span><span class="st">"Longitude"</span>,<span class="at">axes=</span><span class="cn">FALSE</span>,<span class="at">extremes =</span> <span class="fu">c</span>(<span class="st">"dark green"</span>,<span class="st">"white"</span>))</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="concluding-remarks" class="level1">
+<h1>7 Concluding remarks</h1>
+<p>This interactive map was deployed online through <a href="https://www.shinyapps.io/" target="_blank">shinyapps.io</a> by running the following command in R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsconnect)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>rsconnect<span class="sc">::</span><span class="fu">deployApp</span>(<span class="at">appDir =</span> <span class="st">"&lt;insert path to the parent folder of the app.R file&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Overall, I constructed a webpage for users to interactively learn about the climate change and corresponding shift in the last three decades both around the world and in the areas they are interested in. By further developing the design and content, this platform could raise awareness in the biological impacts of climate change and further encourage the development of citizen science in phenology.</p>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Burrows, M. T., Schoeman, D. S., Buckley, L. B., Moore, P., Poloczanska, E. S., Brander, K. M., Brown, C., Bruno, J. F., Duarte, C. M., Halpern, B. S., &amp; Holding, J. (2011). The pace of shifting climate in marine and terrestrial ecosystems. Science, 334(6056), 652-655.</p>
+<p>Loarie, S. R., Duffy, P. B., Hamilton, H., Asner, G. P., Field, C. B., &amp; Ackerly, D. D. (2009). The velocity of climate change. Nature, 462(7276), 1052.</p>
+<p>Richardson, A. D., Keenan, T. F., Migliavacca, M., Ryu, Y., Sonnentag, O., &amp; Toomey, M. (2013). Climate change, phenology, and phenological control of vegetation feedbacks to the climate system. Agricultural and Forest Meteorology, 169, 156-173.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
